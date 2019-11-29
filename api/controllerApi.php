@@ -1,4 +1,5 @@
 <?php
+
 require_once("apiView.php");
 abstract class ApiController {
     protected $view;
