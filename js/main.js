@@ -19,6 +19,7 @@ const app = new Vue({
 
         async getComentario() {
             let id =  document.querySelector("#idProducto").value;
+            console.log(id);
             try {
                 let promesa = await fetch(this.url+"/"+id);
                 if (promesa.ok) {
@@ -41,7 +42,7 @@ const app = new Vue({
                      body: JSON.stringify(this.comentario)
                  });
                  if (promesa.ok){
-                     let respuesta = await promesa.text();
+                     let respuesta = await promesa.json();
                      if (respuesta){
                          console.log(respuesta);
                      }
