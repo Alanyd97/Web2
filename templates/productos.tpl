@@ -17,7 +17,7 @@
                       <td>{$producto->nombre}</td>
                       <td scope="col"> <a href="detalle/{$producto->id_producto}">Detalle</th>
                     </tr>
-                    {/foreach}
+                  {/foreach}
                 </tbody>
               </table>
 
@@ -37,9 +37,9 @@
                   <th scope="col">Descripcion</th>
                   <th scope="col">Precio</th>
                   <th scope="col">Categoria</th>
-                  <th scope="col">Editar</th>
                   <th scope="col">Borrar</th>
-                  <th scope="col">Imagen</th>
+                  <th scope="col">Editar</th>
+                  <th scope="col">Imagenes</th>
                 </tr>
               </thead>
               <tbody>
@@ -57,6 +57,7 @@
                     </td>
                     <td><a href='borrar/{$producto->id_producto}'>Borrar</a></td>
                     <td><a href='MostrarEditar/{$producto->id_producto}'>Editar</a></td>
+                    <td><a href='MostrarSubirImagen/{$producto->id_producto}'>Subir imagen</a></td>
                     <td>
                     {foreach from=$lista_img item=img}
                       {if $img->id_producto eq $producto->id_producto}
@@ -66,7 +67,7 @@
                     {/foreach}
                     </td>
                   </tr>
-                  {/foreach}
+                {/foreach}
               </tbody>
             </table>
             {include file="form_productos.tpl"}

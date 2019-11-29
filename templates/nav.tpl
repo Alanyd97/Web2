@@ -25,9 +25,15 @@
           <li class="nav-item">
             <a class="nav-link" href="logOut">LogOut</a>
           </li>
+          <li class="nav-item">
+            <p class="nav-link">Soy el admin!! "{$usuario->nombre}"</p>
+          </li>
         {elseif $usuario->admin eq 1}    
           <li class="nav-item">
             <a class="nav-link" href="logOut">LogOut</a>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link">Sesion iniciada con "{$usuario->nombre}"</p>
           </li>
         {/if}   
        

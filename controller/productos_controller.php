@@ -105,12 +105,6 @@ class ProductosController extends Seguridad {
             if (($_POST['nombre'] != '') && ($_POST['descripcion']!= '') && ($_POST['precio']!= '') && ($_POST['categoria']!= '')) {
                 $this->model->EditarProducto($_POST['nombre'],$_POST['descripcion'],$_POST['precio'],$_POST['categoria'],$id[0]);
             }
-            if ($_FILES['imagenes']['name'] != ''){
-                $origen = $_FILES['imagenes']['tmp_name'];
-                $destino = $this->DestinoImagen($_FILES['imagenes']['name']);
-                copy($origen, $destino);
-                $this->ImgModel->AgregarImagen($destino, $id[0]);
-            }
         }
         header(PRODUCTOS);
     }
@@ -126,6 +120,30 @@ class ProductosController extends Seguridad {
         $this->view->DisplayEditar($producto, $categorias, $img, $usuario);
         }
     }
-}
+    public function DisplayMostrarImagen($id){
+        session_start();                    
+        if ($_SESSION['admin'] == 0) {
+            session_abort();
+        $producto = $this->model->GetProducto($id[0]);
+        $img = $this->ImgModel->GetImagenesProducto($id[0]);
+        $usuario = $this->usrModel->GetUsuarioID($_SESSION['id_usuario']);
+        $this->view->DisplaySubirImagen($producto, $img, $usuario);
+        }
+    }
+    public function SubirImagen($id){
+        session_start();
+        if ($_SESSION['admin'] == 0) {
+            session_abort();
+                if ($_FILES['imagenes']['name'] != ''){
+                    $origen = $_FILES['imagenes']['tmp_name'];
+                    $nProd = $this->model->lastInsertId();
+                    $destino = $this->DestinoImagen($_FILES['imagenes']['name']);
+                    copy($origen, $destino);
+                    $this->ImgModel->AgregarImagen($destino,$id[0]);
+                }
+            }
+            header(PRODUCTOS);
+        }
+    }
 
 ?>

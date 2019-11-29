@@ -46,7 +46,16 @@ class ProductosView {
         $this->smarty->display('templates/editar.tpl');
         
     }
-
+    public function DisplaySubirImagen($producto, $img = "", $usuario){ 
+        $this->smarty->display('templates/top.tpl');
+        $this->smarty->assign('usuario',$usuario);
+        $this->smarty->display('templates/nav.tpl');
+        $this->smarty->assign('titulo',"Mostrar Producto");
+        $this->smarty->assign('producto',$producto);
+        $this->smarty->assign('imagenes', $img);
+        $this->smarty->display('templates/subirImagen.tpl');
+        
+    }
     
 }
 

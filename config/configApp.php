@@ -22,6 +22,8 @@ class ConfigApp
       'MostrarEditar'=>'ProductosController#DisplayEditar',
       'editar'=>'ProductosController#EditarProducto',
       'borrarimagen'=>'ProductosController#BorrarImagen',
+      'MostrarSubirImagen'=>'ProductosController#DisplayMostrarImagen',
+      'subirImagen'=>'ProductosController#SubirImagen',
       #categorias
       'categorias'=>'CategoriasController#GetCategorias',
       'insertarCategoria'=>'CategoriasController#InsertarCategoria',
