@@ -16,7 +16,7 @@ class ComentariosApiController extends ApiController {
 
     public function AgregarComentario($params = []){
         $comentarios = $this->getData();
-        $this->model->AgregarComentario($comentarios->puntaje, $comentarios->comentario, $comentarios->idProducto, $comentarios->idUsr);
+        $this->model->AgregarComentario($comentarios->puntaje, $comentarios->comentario, $comentarios->idProducto, $comentarios->idUsr,$comentarios->admin);
     }
 
 

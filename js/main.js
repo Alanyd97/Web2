@@ -3,28 +3,32 @@
 const app = new Vue({
     el: "#app",  
     created() {
-       this.getComentario();
+        this.admin = document.getElementById("admin").value;
+        console.log(this.admin);
+        this.getComentario();
       },
     data: {
+        respuesta : [],
+        admin:'',
+        idComentario: '',
         comentario: {
             puntaje: "",
             comentario: "",
             idUsr: '',
-            idProducto: ''
+            idProducto: '',
+            admin: ''
         },
         url: "api/comentarios",
-        respuesta : []
     },
     methods: {
-
         async getComentario() {
             let id =  document.querySelector("#idProducto").value;
             try {
                 let promesa = await fetch(this.url+"/"+id);
                 if (promesa.ok) {
                     let respuesta = await promesa.json();
-                    if (respuesta) {
-                       this.respuesta = respuesta;
+                    if (respuesta) {    
+                        app.respuesta= respuesta;
                     }
                 } else {
                     alert("Ocurrio un error");
@@ -43,7 +47,7 @@ const app = new Vue({
                  if (promesa.ok){
                      let respuesta = await promesa.text();
                      if (respuesta){
-                         console.log(respuesta);
+                        this.getComentario();
                      }
                  }
              } catch (error) {
@@ -52,13 +56,13 @@ const app = new Vue({
         },
         async deleteComentario() {
             try {
-                 let promesa = await fetch(this.url+"/"+this.comentario.idUsr, {
+                 let promesa = await fetch(this.url+"/"+this.idComentario, {
                     method: 'DELETE',
                     headers: {'Content-Type': 'application/json'},       
                      body: JSON.stringify(this.comentario)
                  });
                  if (promesa.ok){
-                     console.log(p);
+                     this.getComentario();
                  }
              } catch (error) {
                  console.log(error);
