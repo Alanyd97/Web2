@@ -45,10 +45,8 @@ const app = new Vue({
                      body: JSON.stringify(this.comentario)
                  });
                  if (promesa.ok){
-                     let respuesta = await promesa.text();
-                     if (respuesta){
+                    
                         this.getComentario();
-                     }
                  }
              } catch (error) {
                  console.log(error);

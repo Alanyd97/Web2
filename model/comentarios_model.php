@@ -11,7 +11,7 @@ class ComentariosModel
   }
  
   function GetComentarioProducto($id_producto){
-    $sentencia = $this->db->prepare("SELECT id_comentario,puntaje,comentario,id_producto,id_usuario,admin FROM comentarios ORDER BY puntaje DESC");
+    $sentencia = $this->db->prepare("SELECT * FROM comentarios WHERE id_producto = ? ORDER BY puntaje DESC");
     $sentencia->execute(array($id_producto));
     return $sentencia->fetchAll(PDO::FETCH_OBJ);
   }

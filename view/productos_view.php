@@ -23,7 +23,7 @@ class ProductosView {
     }
     
     // FUNCION QUE MUESTRA LOS PRODUCTOS
-    public function DisplayDetalle($producto, $img, $usuario = null){ 
+    public function DisplayDetalle($producto, $img = "", $usuario = null){ 
         $this->smarty->display('templates/top.tpl');
         $this->smarty->assign('usuario',$usuario);
         $this->smarty->display('templates/nav.tpl');
