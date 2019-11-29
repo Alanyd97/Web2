@@ -3,10 +3,14 @@
 const app = new Vue({
     el: "#app",  
     created() {
+        this.admin = document.getElementById("admin").value;
+        console.log(this.admin);
         this.getComentario();
       },
     data: {
         respuesta : [],
+        admin:'',
+        idComentario: '',
         comentario: {
             puntaje: "",
             comentario: "",
@@ -18,7 +22,6 @@ const app = new Vue({
     },
     methods: {
         async getComentario() {
-            console.log(this.banana);
             let id =  document.querySelector("#idProducto").value;
             try {
                 let promesa = await fetch(this.url+"/"+id);
@@ -44,7 +47,7 @@ const app = new Vue({
                  if (promesa.ok){
                      let respuesta = await promesa.text();
                      if (respuesta){
-                         console.log(respuesta);
+                        this.getComentario();
                      }
                  }
              } catch (error) {
@@ -53,13 +56,13 @@ const app = new Vue({
         },
         async deleteComentario() {
             try {
-                 let promesa = await fetch(this.url+"/"+this.comentario.idUsr, {
+                 let promesa = await fetch(this.url+"/"+this.idComentario, {
                     method: 'DELETE',
                     headers: {'Content-Type': 'application/json'},       
                      body: JSON.stringify(this.comentario)
                  });
                  if (promesa.ok){
-                     console.log(p);
+                     this.getComentario();
                  }
              } catch (error) {
                  console.log(error);

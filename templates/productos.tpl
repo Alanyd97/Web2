@@ -57,6 +57,7 @@
                     </td>
                     <td><a href='borrar/{$producto->id_producto}'>Borrar</a></td>
                     <td><a href='MostrarEditar/{$producto->id_producto}'>Editar</a></td>
+                    <td scope="col"> <a href="detalle/{$producto->id_producto}">Detalle</th>
                     <td>
                     {foreach from=$lista_img item=img}
                       {if $img->id_producto eq $producto->id_producto}

@@ -28,10 +28,14 @@
  
  
  <div class="row d-flex justify-content-center" >
-
+ {if $usuario != null} 
+      <input type="text" id="idusuario" class="form-control d-none"  v-model="comentario.idUsr = {$usuario->id_usuario}"> 
+      <input id="admin" value="{$usuario->admin}" class="form-control d-none">
+  {/if}  
 
   <div class="col-6 align-self-center">
-  <form class="form-signin text-center" >
+  <form v-if="admin !=0 " class="form-signin text-center">
+  
     <div class="form-group">
       <label for="exampleFormControlSelect1">Puntaje</label>
       <select class="form-control" v-model="comentario.puntaje" id="exampleFormControlSelect1" required>
@@ -44,26 +48,22 @@
     </div>
     <div class="form-group">
       <label for="coment" >Comentario</label>
-   
       <textarea class="form-control" id="coment" v-model="comentario.comentario" rows="3" required></textarea>
-      <input type="text" id="idProducto" value="{$producto->id_producto}"  class="form-control d-none" v-model="comentario.idProducto = {$producto->id_producto}">
-    {if $usuario != null} 
-       <input type="text" id="idusuario" class="form-control d-none"  v-model="comentario.idUsr = {$usuario->id_usuario}"> 
-       <input type="text" class="form-control d-none"  v-model="comentario.admin = {$usuario->admin}">
-    {/if}  
+     
+    
+    
+   
     
     </div>
   </form>
-    
+   
  {if $usuario eq null}
     <h2>Loguearse para poder comentar</h2>
-  {elseif $usuario->admin eq 0}
-    <h2>Aca van las opciones de borrar y demas</h2>
   {else}    
-    <button  class="btn btn-primary" @click="postComentario" value="">Comentar</button>
+   <input type="text" id="idProducto" value="{$producto->id_producto}"  class="form-control d-none" v-model="comentario.idProducto = {$producto->id_producto}">
+    <button  v-if="admin !=0 " class="btn btn-primary" @click="postComentario" value="">Comentar</button>
   {/if}  
    
-  
 {include file="comentarios.tpl"}
 
   </div>
