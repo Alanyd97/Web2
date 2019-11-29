@@ -45,10 +45,14 @@
     </div>
     <div class="form-group">
       <label for="coment" >Comentario</label>
+   
       <textarea class="form-control" id="coment" v-model="comentario.comentario" rows="3" required></textarea>
-    </div>
+    {if $usuario != null}v-model="{hayusuario =  true}"
     <input type="text" id="idusuario" class="form-control d-none"  v-model="comentario.idUsr = {$usuario->id_usuario}">
     <input type="text" id="idProducto" value="{$producto->id_producto}"  class="form-control d-none" v-model="comentario.idProducto = {$producto->id_producto}">
+    {/if}  
+    
+    </div>
   </form>
     
  {if $usuario eq null}

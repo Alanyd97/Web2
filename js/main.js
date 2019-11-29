@@ -3,9 +3,12 @@
 const app = new Vue({
     el: "#app",  
     created() {
-       this.getComentario();
+        if (this.hayusuario){
+            this.getComentario();
+        }
       },
     data: {
+        hayusuario : false,
         comentario: {
             puntaje: "",
             comentario: "",
