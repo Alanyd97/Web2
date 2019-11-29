@@ -1,7 +1,6 @@
 
 
-<div class="container-fluid">
-
+<div class="container-fluid" id="app">
  <div class="row d-flex justify-content-center">
     <div class="col-10 col-lg-8">
       <table class="table table-dark">
@@ -28,7 +27,7 @@
   </div>
  
  
- <div class="row d-flex justify-content-center" id="app">
+ <div class="row d-flex justify-content-center" >
 
 
   <div class="col-6 align-self-center">
@@ -47,9 +46,10 @@
       <label for="coment" >Comentario</label>
    
       <textarea class="form-control" id="coment" v-model="comentario.comentario" rows="3" required></textarea>
-    {if $usuario != null}v-model="{hayusuario =  true}"
-    <input type="text" id="idusuario" class="form-control d-none"  v-model="comentario.idUsr = {$usuario->id_usuario}">
-    <input type="text" id="idProducto" value="{$producto->id_producto}"  class="form-control d-none" v-model="comentario.idProducto = {$producto->id_producto}">
+      <input type="text" id="idProducto" value="{$producto->id_producto}"  class="form-control d-none" v-model="comentario.idProducto = {$producto->id_producto}">
+    {if $usuario != null} 
+       <input type="text" id="idusuario" class="form-control d-none"  v-model="comentario.idUsr = {$usuario->id_usuario}"> 
+       <input type="text" class="form-control d-none"  v-model="comentario.admin = {$usuario->admin}">
     {/if}  
     
     </div>
@@ -63,7 +63,9 @@
     <button  class="btn btn-primary" @click="postComentario" value="">Comentar</button>
   {/if}  
    
+  
 {include file="comentarios.tpl"}
+
   </div>
 </div>
 

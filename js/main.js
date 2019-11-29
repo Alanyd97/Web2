@@ -3,31 +3,29 @@
 const app = new Vue({
     el: "#app",  
     created() {
-        if (this.hayusuario){
-            this.getComentario();
-        }
+        this.getComentario();
       },
     data: {
-        hayusuario : false,
+        respuesta : [],
         comentario: {
             puntaje: "",
             comentario: "",
             idUsr: '',
-            idProducto: ''
+            idProducto: '',
+            admin: ''
         },
         url: "api/comentarios",
-        respuesta : []
     },
     methods: {
-
         async getComentario() {
+            console.log(this.banana);
             let id =  document.querySelector("#idProducto").value;
             try {
                 let promesa = await fetch(this.url+"/"+id);
                 if (promesa.ok) {
                     let respuesta = await promesa.json();
-                    if (respuesta) {
-                       this.respuesta = respuesta;
+                    if (respuesta) {    
+                        app.respuesta= respuesta;
                     }
                 } else {
                     alert("Ocurrio un error");
