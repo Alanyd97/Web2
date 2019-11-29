@@ -45,6 +45,11 @@ class ProductosModel {
         $sentencia->execute();
         return $sentencia->fetch(PDO::FETCH_OBJ);
       }
+      function GetImagenesProducto($id_producto){
+        $sentencia = $this->db->prepare( "SELECT * FROM imagen WHERE id_producto = ?");
+         $sentencia->execute(array($id_producto));
+          return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
 
 }
 

@@ -43,5 +43,4 @@
   <input type="submit" class="btn btn-primary" value="editar">
 </form><p></p>
 
-
 {include file="footer.tpl"}

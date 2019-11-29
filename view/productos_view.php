@@ -56,6 +56,7 @@ class ProductosView {
         $this->smarty->display('templates/subirImagen.tpl');
         
     }
+
     
 }
 

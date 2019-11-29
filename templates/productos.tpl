@@ -17,7 +17,7 @@
                       <td>{$producto->nombre}</td>
                       <td scope="col"> <a href="detalle/{$producto->id_producto}">Detalle</th>
                     </tr>
-                  {/foreach}
+                    {/foreach}
                 </tbody>
               </table>
 
@@ -39,6 +39,7 @@
                   <th scope="col">Categoria</th>
                   <th scope="col">Borrar</th>
                   <th scope="col">Editar</th>
+                  <th scope="col">Detalle</th>
                   <th scope="col">Imagenes</th>
                 </tr>
               </thead>
@@ -57,6 +58,7 @@
                     </td>
                     <td><a href='borrar/{$producto->id_producto}'>Borrar</a></td>
                     <td><a href='MostrarEditar/{$producto->id_producto}'>Editar</a></td>
+                    <td scope="col"> <a href="detalle/{$producto->id_producto}">Detalle</th>
                     <td><a href='MostrarSubirImagen/{$producto->id_producto}'>Subir imagen</a></td>
                     <td>
                     {foreach from=$lista_img item=img}
@@ -67,7 +69,7 @@
                     {/foreach}
                     </td>
                   </tr>
-                {/foreach}
+                  {/foreach}
               </tbody>
             </table>
             {include file="form_productos.tpl"}
